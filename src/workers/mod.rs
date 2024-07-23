@@ -1,4 +1,5 @@
 pub mod client;
+pub mod parser;
 pub mod search;
 
 pub struct Worker {

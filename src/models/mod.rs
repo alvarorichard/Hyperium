@@ -1,23 +1,33 @@
 use std::time::Duration;
-
-pub const BASE_URL: &str = "https://vizertv.in/";
-pub const UA: &str = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36";
-pub const ENCONDING: &str = "gzip, deflate, br, zstd";
-
+pub mod common;
 pub mod movie;
+
+#[derive(Debug)]
+pub struct Media {
+    pub title: String,
+    pub pictures: Vec<Pic>,
+    pub url: String,
+    pub year: String,
+    pub duration: Option<Duration>,
+    pub media_type: MediaType,
+    pub description: String,
+}
 
 #[derive(Debug)]
 pub enum MediaType {
     TvShow,
     Movie,
     Anime,
+    Unknown,
 }
-
-pub struct Media {
-    pub title: String,
+#[derive(Debug)]
+pub enum PicFormat {
+    Webp,
+    Jpeg,
+    Png,
+}
+#[derive(Debug)]
+pub struct Pic {
     pub url: String,
-    pub year: String,
-    pub duration: Option<Duration>,
-    pub media_type: MediaType,
-    pub description: String,
+    pub format: PicFormat,
 }
